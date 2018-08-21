@@ -1,7 +1,7 @@
 new Vue({
 	el: '#app',
   data: {
-  title: 'Hello World',
+  title: 'Hello World!!!!',
   link: 'http://google.com'
   },
   methods: {
@@ -9,7 +9,8 @@ new Vue({
     	this.title = event.target.value;
     },
     sayHello: function() {
-      return this.title
+      this.title = 'Hello';
+      return this.title;
     }
   }
 });
