@@ -16,9 +16,12 @@
           <p>{{ sayHello() }}</p>
           <hr>
           <p v-html="finishedLink"></p>
-          <button v-on:click="increase(2, $event)">Click Me</button>
-          <button v-on:click="counter++">Click Me</button>
-          <p>{{ counter  * 2 > 10 ? 'Greate than 10' : 'Smaller than 10' }}</p>
+          <button v-on:click="counter++">Increase</button>
+          <button v-on:click="counter--">Decrease</button>
+          <button v-on:click="secondCounter++">Increase Second</button>
+          <button v-on:click="secondCounter--">Decrease Second</button>
+          <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+          <p>result: {{ result() }} | {{ output }}</p>
           <p v-on:mousemove="updateCoordinates">
               Coordinates: {{ x }} / {{ y }}
               - <span v-on:mousemove.stop="">DEAD SPOT</span>
