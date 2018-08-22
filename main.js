@@ -1,6 +1,7 @@
 new Vue({
 	el: '#app',
   data: {
+  name: 'Alex',
   title: 'Hello World!!!!',
   link: 'http://google.com',
   finishedLink: '<a href="https://vuejs.org">VueJS</a>',
