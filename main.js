@@ -9,12 +9,19 @@ new Vue({
   secondCounter: 0,
   x: 0,
   y: 0,
-  attachRed: false
+  attachRed: false,
+  color: "green"
   },
   computed: {
     output: function() {
       console.log('Computed');
       return this.counter > 5 ? 'Greater 5' : 'Smaller 5';
+    },
+    divClasses: function() {
+      return {
+        red: attachRed,
+        blue: !this.attachRed
+      }
     }
   },
   watch: {
