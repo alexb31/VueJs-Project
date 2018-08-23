@@ -9,11 +9,20 @@ new Vue({
   secondCounter: 0,
   x: 0,
   y: 0,
+  attachRed: false
   },
   computed: {
     output: function() {
       console.log('Computed');
       return this.counter > 5 ? 'Greater 5' : 'Smaller 5';
+    }
+  },
+  watch: {
+    counter: function(value) {
+      var vm = this;
+      setTimeout(function() {
+        vm.counter = 0;
+      }, 2000);
     }
   },
   methods: {

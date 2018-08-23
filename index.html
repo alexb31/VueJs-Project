@@ -12,14 +12,14 @@
     
     <div id="app">
         <input type="text" v-on:input="changeTitle">
-          <p v-once>{{ title }} - <a v-bind:href="link">Google</a></p>
+          <p v-once>{{ title }} - <a :href="link">Google</a></p>
           <p>{{ sayHello() }}</p>
           <hr>
           <p v-html="finishedLink"></p>
-          <button v-on:click="counter++">Increase</button>
-          <button v-on:click="counter--">Decrease</button>
-          <button v-on:click="secondCounter++">Increase Second</button>
-          <button v-on:click="secondCounter--">Decrease Second</button>
+          <button @click="counter++">Increase</button>
+          <button @click="counter--">Decrease</button>
+          <button @click="secondCounter++">Increase Second</button>
+          <button @click="secondCounter--">Decrease Second</button>
           <p>Counter: {{ counter }} | {{ secondCounter }}</p>
           <p>result: {{ result() }} | {{ output }}</p>
           <p v-on:mousemove="updateCoordinates">
@@ -30,6 +30,10 @@
             <hr>
             <input type="text" v-model="name">
             <p>{{ name }}</p>
+            <hr>
+            <div class="demo" @click="attachRed = !attachRed" :class="{red: attachRed}"></div>
+            <div class="demo"></div>
+            <div class="demo"></div>
     </div>
 
 </body>
