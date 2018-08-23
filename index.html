@@ -31,11 +31,13 @@
             <input type="text" v-model="name">
             <p>{{ name }}</p>
             <hr>
-            <div class="demo" @click="attachRed = !attachRed" :class="{red: attachRed}"></div>
-            <div class="demo" :class="{red: attachRed}"></div>
+            <!-- <div class="demo" @click="attachRed = !attachRed" :class="{red: attachRed}"></div> -->
+            <div class="demo" :style="{backgroundColor: color}"></div>
+            <div class="demo" :style="myStyle"></div>
             <div class="demo" :class="[color, {red:attachRed}]"></div>
             <hr>
             <input type="text" v-model="color">
+            <input type="text" v-model="width">
     </div>
 
 </body>
