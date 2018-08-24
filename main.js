@@ -12,7 +12,12 @@ new Vue({
   y: 0,
   attachRed: false,
   color: "gray",
-  width: 100
+  width: 100,
+  ingredients: ['meat', 'fruit', 'cookies'],
+  persons: [
+    {name: "Max", age: 27, color: 'red'},
+    {name: "Anna", age: "unknow", color: 'blue'}
+  ]
   },
   computed: {
     output: function() {
