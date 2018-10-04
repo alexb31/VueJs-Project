@@ -1,13 +1,17 @@
+var data = {
+    title: 'The VueJS Instance',
+    showParagraph: false
+};
+
 var vm1 = new Vue({
     el: "#app1",
-    data: {
-        title: 'The VueJS Instance',
-        showParagraph: false
-    },
+    data: data,
     methods: {
         show: function() {
             this.showParagraph = true;
-            this.updateTitle(this.title + ' (Updated)')
+            this.updateTitle('(Updated)');
+            console.log(this.$refs.myButton);
+            this.$refs.myButton.innerText = 'Test';
         },
         updateTitle: function(title) {
             this.title = title;
@@ -25,9 +29,9 @@ var vm1 = new Vue({
     }
 });
 
-setTimeout(function() {
-    vm1.title = vm1.title + " by Timer";
-}, 3000);
+vm1.newProp = 'New';
+console.log(vm1.$data === data);
+vm1.$refs.heading.innerText = 'Something Else';
 
 var vm2 = new Vue({
     el: "#app2",
