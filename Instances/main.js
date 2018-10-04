@@ -29,6 +29,8 @@ var vm1 = new Vue({
     }
 });
 
+vm1.$mount('#app1');
+
 vm1.newProp = 'New';
 console.log(vm1.$data === data);
 vm1.$refs.heading.innerText = 'Something Else';
@@ -43,4 +45,11 @@ var vm2 = new Vue({
             vm1.title = 'Changed'
         }
     }
-})
+});
+
+var vm3 = new Vue({
+    template: '<h1>Hello!</h1>'
+});
+
+vm3.$mount();
+document.getElementById('app3').appendChild(vm3.$el);
