@@ -6,6 +6,30 @@ var data = {
 var vm1 = new Vue({
     el: "#app1",
     data: data,
+    beforeCreate() {
+        console.log('beforeCreate()');
+    },
+    created() {
+        console.log('Created()');
+    },
+    beforeMount() {
+        console.log('beforeMount');
+    },
+    mounted() {
+        console.log('mounted()');
+    },
+    beforeUpdate() {
+        console.log('beforeUpdate()');
+    },
+    updated() {
+        console.log('updated()');
+    },
+    beforeDestroy() {
+        console.log('beforeDestroy()');
+    },
+    destroyed() {
+        console.log('destroyed()');
+    },
     methods: {
         show: function() {
             this.showParagraph = true;
@@ -15,6 +39,9 @@ var vm1 = new Vue({
         },
         updateTitle: function(title) {
             this.title = title;
+        },
+        destroy: function() {
+            this.$destroy();
         }
     },
     computed: {
