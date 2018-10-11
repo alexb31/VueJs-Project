@@ -1,8 +1,10 @@
-var data = { status: 'Critical' };
+// var data = { status: 'Critical' };
 
-Vue.component('my-cmp', {
+var cmp = {
   data: function() {
-    return data;
+    return {
+      status: 'Critical'
+    };
   },
   template: '<p>Server Status: {{ status }} (<button @click="changeStatus">Change</button>)</p>',
   methods: {
@@ -10,10 +12,17 @@ Vue.component('my-cmp', {
       this.status = 'Normal'
     }
   }
+};
+
+new Vue({
+  el: '#app2',
+  components: {
+    'my-cmp' : cmp
+  }
 });
 
 new Vue({
-  el: '#app2'
+  el: '#app3'
 });
 
 new Vue({
