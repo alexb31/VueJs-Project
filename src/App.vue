@@ -1,35 +1,27 @@
 <template>
-  <app-servers></app-servers>
+    <div class="container">
+        <app-header></app-header>
+        <hr>
+        <div class="row">
+            <servers></servers>
+            <server-details></server-details>
+        </div>
+        <hr>
+        <app-footer></app-footer>
+    </div>
 </template>
 
 <script>
+    import Header from './Header.vue';
+    import Servers from './Servers.vue'
+    import ServerDetails from './ServerDetails.vue';
+    import Footer from './Footer.vue';
+    export default {
+        components: {
+            'app-header': Header,
+            'servers': Servers,
+            'server-details': ServerDetails,
+            'app-footer': Footer
+        }
+    }
 </script>
-
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
