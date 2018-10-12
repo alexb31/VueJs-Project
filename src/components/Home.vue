@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import ServerStatus from './ServerStatus.vue';
+    import ServerStatus from './server/ServerStatus.vue';
     export default {
         components: {
             'app-server-status': ServerStatus

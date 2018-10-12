@@ -12,15 +12,15 @@
 </template>
 
 <script>
-    import Header from './Header.vue';
-    import Servers from './Servers.vue'
-    import ServerDetails from './ServerDetails.vue';
-    import Footer from './Footer.vue';
+    import Header from './components/shared/Header.vue';
+    import ServerDetails from './components/server/ServerDetails.vue';
+    import Servers from './components/server/Servers.vue'
+    import Footer from './components/shared/Footer.vue';
     export default {
         components: {
             'app-header': Header,
-            'servers': Servers,
             'server-details': ServerDetails,
+            'servers': Servers,
             'app-footer': Footer
         }
     }
