@@ -1,46 +1,49 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <button @click="selectedComponent = 'appQuote'">Quote</button>
-        <button @click="selectedComponent = 'appAuthor'">Author</button>
-        <button @click="selectedComponent = 'appNew'">New</button>
-        <hr>
-        <p>{{ selectedComponent }}</p>
-        <keep-alive>
-          <component :is="selectedComponent">
-            <h2 slot="title">The Quote</h2>
-            <p>A Wonderful Quote!</p>
-          </component>
-        </keep-alive>
-        <!-- <app-quote>
-          <h2 slot="title">The Quote</h2>
-          <p>A Wonderful Quote!</p>
-        </app-quote> -->
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <br>
+                <button class="btn btn-primary" @click="selectedComponent ='appBlue'">Load Blue Template</button>
+                <button class="btn btn-success" @click="selectedComponent = 'appGreen'">Load Green Template</button>
+                <button class="btn btn-danger" @click="selectedComponent = 'appRed'">Load Red Template</button>
+                <hr>
+                <keep-alive>
+                    <component :is="selectedComponent">
+                        <p>Content</p>
+                    </component>
+                </keep-alive>
+                <!-- <app-blue>
+                    <p>Content</p>
+                </app-blue>
+                <app-green>
+                    <p>Content</p>
+                </app-green>
+                <app-red>
+                    <p>Content</p>
+                </app-red> -->
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
-import Quote from "./components/Quote.vue";
-import Author from "./components/Author.vue";
-import New from "./components/New.vue";
+import Blue from "./components/Blue.vue";
+import Green from "./components/Green.vue";
+import Red from "./components/Red.vue";
 
 export default {
   data: function() {
     return {
-      quoteTitle: "the Quote",
-      selectedComponent: "appQuote"
+      selectedComponent: "appBlue"
     };
   },
   components: {
-    appQuote: Quote,
-    appAuthor: Author,
-    appNew: New
+    appBlue: Blue,
+    appGreen: Green,
+    appRed: Red
   }
 };
 </script>
 
-<style lang="scss">
+<style>
 </style>
