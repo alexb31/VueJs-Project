@@ -1,43 +1,43 @@
 <template>
   <div class="container">
+    <app-header :quoteCount="quotes.length" :maxQuotes="maxQuotes"></app-header>
+    <app-new-quote @quoteAdded="newQuote"></app-new-quote>
+    <app-quote-grid :quotes="quotes" @quoteDeleted="deleteQuote"></app-quote-grid>
     <div class="row">
-      <div class="col-xs-12">
-        <button @click="selectedComponent = 'appQuote'">Quote</button>
-        <button @click="selectedComponent = 'appAuthor'">Author</button>
-        <button @click="selectedComponent = 'appNew'">New</button>
-        <hr>
-        <p>{{ selectedComponent }}</p>
-        <keep-alive>
-          <component :is="selectedComponent">
-            <h2 slot="title">The Quote</h2>
-            <p>A Wonderful Quote!</p>
-          </component>
-        </keep-alive>
-        <!-- <app-quote>
-          <h2 slot="title">The Quote</h2>
-          <p>A Wonderful Quote!</p>
-        </app-quote> -->
-      </div>
+      <col-sm-12 class="text-center">
+        <div class="alert alert-info">Info: Click on a Quote to delete it!</div>
+      </col-sm-12>
     </div>
   </div>
 </template>
 
 <script>
-import Quote from "./components/Quote.vue";
-import Author from "./components/Author.vue";
-import New from "./components/New.vue";
+import QuoteGrid from "./components/QuoteGrid";
+import NewQuote from "./components/NewQuote";
+import Header from "./components/Header";
 
 export default {
   data: function() {
     return {
-      quoteTitle: "the Quote",
-      selectedComponent: "appQuote"
+      quotes: ["Just a Quote"],
+      maxQuotes: 10
     };
   },
+  methods: {
+    newQuote(quote) {
+      if(this.quotes.length >= this.maxQuotes) {
+        return alert('Please delete Quotes first');
+      }
+      this.quotes.push(quote);
+    },
+    deleteQuote(index) {
+      this.quotes.splice(index, 1);
+    }
+  },
   components: {
-    appQuote: Quote,
-    appAuthor: Author,
-    appNew: New
+    appQuoteGrid: QuoteGrid,
+    appNewQuote: NewQuote,
+    appHeader: Header
   }
 };
 </script>
