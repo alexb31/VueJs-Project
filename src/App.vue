@@ -1,47 +1,45 @@
 <template>
   <div class="container">
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-      <h1>Built-in Directives</h1>
-      <p v-text="'Some Text'"></p>
-    </div>
-    <hr>
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-      <h1>Custom Directives</h1>
-      <button v-customOn:click="clicked" class="btn btn-primary">Click Me</button>
-      <hr>
-      <div
-        style="width: 100px; height: 100px; background-color: lightgreen"
-        v-customOn:mouseenter="mouseEnter"
-        v-customOn:mouseleave="mouseLeave"
-      ></div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <h1>Filters & Mixins</h1>
+        <p>{{ text | to-lowercase | capitalize }}</p>
+        <hr>
+        <button @click="fruits.push('Berries')">Add New Item</button>
+        <input type="text" v-model="filterText">
+        <ul>
+          <li v-for="fruit in filteredFruits">{{ fruit }}</li>
+        </ul>
+        <hr>
+        <app-list></app-list>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import List from "./components/List.vue";
+import { fruitMixin } from "./fruitMixin.js";
+
 export default {
-  directives: {
-    customOn: {
-      bind(el, binding) {
-        // el.onclick = function() {
-        //   binding.value();
-        // }
-        const type = binding.arg;
-        const fn = binding.value;
-        el.addEventListener(type, fn);
-      }
+  mixins: [fruitMixin],
+  data() {
+    return {
+      text: "hello world!"
+    };
+  },
+  filters: {
+    toUppercase(value) {
+      return value.toUpperCase();
+      console.log(value);
+    },
+    capitalize(value) {
+      return value.charAt(0).toUpperCase() + value.slice(1);
     }
   },
-  methods: {
-    clicked() {
-      alert("I was clicked");
-    },
-    mouseEnter() {
-      console.log("Mouse enter");
-    },
-    mouseLeave() {
-      console.log("Mouse Leave");
-    }
+
+  components: {
+    appList: List
   }
 };
 </script>
