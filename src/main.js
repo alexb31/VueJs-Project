@@ -1,19 +1,22 @@
 import Vue from 'vue';
 import App from './App.vue';
+import VueResource from 'vue-resource';
 
-Vue.filter('to-lowercase', (value) => {
-	return value.toLowerCase();
-});
+Vue.use(VueResource);
 
-Vue.filter('count', value => {
-	console.log(value.length);
-	return value + ' ' + value.length;
-});
-
-Vue.mixin({
-	created() {
-		console.log('Global Mixin - Created Hook');
+Vue.http.options.root = 'https://vuejs-fd86b.firebaseio.com/';
+Vue.http.interceptors.push((request, next) => {
+	console.log(request);
+	if (request.method == 'POST') {
+		request.method = 'PUT';
 	}
+	next((response) => {
+		response.json = () => {
+			return {
+				message: response.body
+			};
+		};
+	});
 });
 
 new Vue({
