@@ -1,64 +1,50 @@
 <template>
   <div class="container">
     <div class="row">
-      <app-header></app-header>
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-        <h1>Routing</h1>
+        <h1>Vuex</h1>
+        <app-result></app-result>
+        <app-another-result></app-another-result>
         <hr>
-
-        <router-view name="header-top"></router-view>
-        <transition name="slide" mode="out-in">
-          <router-view></router-view>
-        </transition>
-        <router-view name="header-bottom"></router-view>
+        <app-counter></app-counter>
+        <br>
+        <app-another-counter></app-another-counter>
+        <hr>
+        <input type="text" v-model="value">
+        <p>{{ value }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Header from "./components/Header";
+import Counter from "./components/Counter.vue";
+import Result from "./components/Result.vue";
+import AnotherResult from "./components/AnotherResult.vue";
+import AnotherCounter from "./components/AnotherCounter.vue";
+
 export default {
-  data() {
-    return {};
+  computed: {
+    value: {
+      get() {
+        return this.$store.getters.value;
+      },
+      set(value) {
+        this.$store.dispatch("updateValue", value);
+      }
+    }
+  },
+  methods: {
+    updateValue(event) {
+      this.$store.dispatch("updateValue", event.target.value);
+    }
   },
   components: {
-    appHeader: Header
+    appCounter: Counter,
+    appResult: Result,
+    appAnotherResult: AnotherResult,
+    appAnotherCounter: AnotherCounter
   }
 };
 </script>
 
-<style>
-.slide-leave-active {
-  transition: opacity 1s ease;
-  opacity: 0;
-  animation: slide-out 1s ease-out forwards;
-}
-
-.slide-leave {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.slide-enter-active {
-  animation: slide-in 1s ease-out forwards;
-}
-
-@keyframes slide-out {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-30px);
-  }
-}
-
-@keyframes slide-in {
-  0% {
-    transform: translateY(-30px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-</style>
